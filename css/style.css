@@ -192,10 +192,13 @@ body {
     width: 150px;
     height: 150px;
     padding: 1rem;
+    margin-top: -5rem;
     border-radius: 50%;
   }
   .square-button {
     border-radius: 0;
+    margin-top: -5rem;
+
   }
   .wallpaper-credit {
     position: absolute;
