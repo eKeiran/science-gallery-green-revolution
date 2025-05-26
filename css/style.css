@@ -167,6 +167,7 @@ body {
   color: #8b0000;
   text-decoration: underline;
 }
+/* ...existing styles... */
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -174,22 +175,21 @@ body {
     flex-direction: column;
   }
   .side {
-    height: 50%;
+    height: 40%;
   }
   .divider {
-    height: 3px;
+    height: 10px;
     width: 100%;
   }
   .circle-button,
   .square-button {
-    width: 150px; /* Fixed size for mobile */
-    height: 150px; /* Fixed size for mobile */
+    width: 150px;
+    height: 150px;
     padding: 1rem;
-    border-radius: 50%; /* Always circle */
-    /* For square button on mobile, add specific class */
+    border-radius: 50%;
   }
   .square-button {
-    border-radius: 0; /* Square shape */
+    border-radius: 0;
   }
   .wallpaper-credit {
     position: absolute;
@@ -203,4 +203,56 @@ body {
     font-weight: bold;
     z-index: 10;
   }
+  .bg-wallpaper {
+    position: fixed;
+    inset: 0;
+    background: url("../assets/img/index_wallpaper_phone.png") no-repeat center center;
+    background-size: cover;
+    filter: brightness(1);
+    z-index: -1;
+    transition: filter 0.5s ease;
+  }
+
+  /* Navbar responsiveness */
+  .navbar {
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    font-size: 0.7rem;
+    min-height: 40px;
+  }
+  .nav-left,
+  .nav-center,
+  .nav-right {
+    flex: unset;
+    width: 100%;
+    text-align: center;
+    margin: 0.2rem 0;
+  }
+  .nav-left {
+    text-align: left;
+  }
+  .nav-right {
+    text-align: right;
+  }
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: background-color 0.4s ease;
 }
+.white-filter {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.black-filter {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+  /* Remove overlays and filters on mobile */
+  /* .overlay,
+  .white-filter,
+  .black-filter {
+    display: none !important;
+  } */
+}
+
+
+
