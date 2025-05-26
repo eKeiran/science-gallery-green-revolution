@@ -184,7 +184,7 @@ body {
     flex-basis: 10px;
     height: 10px;
     width: 100%;
-    margin: 0;
+    margin-top: -5rem;
     align-self: center;
   }
   .circle-button,
@@ -247,7 +247,7 @@ body {
     transition: background-color 0.4s ease;
   }
   .white-filter {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(189, 142, 142, 0.7);
   }
   .black-filter {
     background-color: rgba(0, 0, 0, 0.8);
