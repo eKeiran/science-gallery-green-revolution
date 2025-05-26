@@ -173,13 +173,19 @@ body {
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    height: 100vh;
   }
   .side {
-    height: 40%;
+    flex: 1;
+    min-height: 0;
+    height: auto;
   }
   .divider {
+    flex-basis: 10px;
     height: 10px;
     width: 100%;
+    margin: 0;
+    align-self: center;
   }
   .circle-button,
   .square-button {
@@ -234,18 +240,18 @@ body {
   .nav-right {
     text-align: right;
   }
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  transition: background-color 0.4s ease;
-}
-.white-filter {
-  background-color: rgba(255, 255, 255, 0.7);
-}
-.black-filter {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+  .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: background-color 0.4s ease;
+  }
+  .white-filter {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .black-filter {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
   /* Remove overlays and filters on mobile */
   /* .overlay,
   .white-filter,
