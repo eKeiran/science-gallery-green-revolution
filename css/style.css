@@ -1,0 +1,179 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Arial Black", sans-serif;
+  overflow: hidden;
+}
+
+/* WALLPAPER */
+.bg-wallpaper {
+  position: fixed;
+  inset: 0;
+  background: url('../assets/img/index_wallpaper.png') no-repeat center center;
+  background-size: cover;
+  filter: brightness(1);
+  z-index: -10;
+  transition: filter 0.5s ease;
+}
+
+/* DARKEN WALLPAPER ON SIDE HOVER */
+.left-zone:hover ~ .bg-wallpaper {
+  filter: brightness(0.35);
+}
+.right-zone:hover ~ .bg-wallpaper {
+  filter: brightness(0.35);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
+}
+.nav-left, .nav-center, .nav-right {
+  flex: 1;
+  text-align: center;
+}
+.nav-left { text-align: left; }
+.nav-right { text-align: right; text-transform: uppercase; }
+
+/* MAIN CONTAINER */
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
+  position: relative;
+}
+
+/* PANELS */
+.side {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* OVERLAYS */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: background-color 0.4s ease;
+}
+.white-filter {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.black-filter {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.left-zone:hover .white-filter {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.right-zone:hover .black-filter {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* DIVIDER LINE */
+.divider {
+  width: 3px;
+  background-color: #8B0000;
+  z-index: 3;
+}
+
+/* BUTTONS */
+.split-button {
+  z-index: 2;
+  font-size: 1.3rem;
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  animation-duration: 0.4s;
+  text-decoration: none;z
+}
+.circle-button {
+  border-radius: 50%;
+  border-color: #111;
+  color: #111;
+  background-color: #f1f1f1;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.square-button {
+  width: 200px;
+  height: 200px;
+  border-color: #fff;
+  color: #fff;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* HOVER STATE */
+.circle-button:hover {
+  background-color: #111;
+  color: #fff;
+  animation-name: tada;
+}
+.square-button:hover {
+  background-color: #fff;
+  color: #000;
+  animation-name: tada;
+}
+
+/* FOOTER */
+.wallpaper-credit {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #000;
+  font-weight: bold;
+  z-index: 10;
+}
+.wallpaper-credit a {
+  color: #8B0000;
+  text-decoration: underline;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .side {
+    height: 50%;
+  }
+  .divider {
+    height: 3px;
+    width: 100%;
+  }
+  .circle-button, .square-button {
+    width: auto;
+    height: auto;
+    padding: 1rem 1.5rem;
+    border-radius: 30px;
+  }
+}

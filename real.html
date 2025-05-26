@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>They Called It a Revolution</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon3.ico">
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,400,600|Tulpen+One&display=swap');
+
+        :root {
+            /* colors */
+            --body-bg: #FAFAFA;
+            --page-bg: #F5F5F5;
+            --dark-text: #2A2935;
+            
+            /* spacing */
+            --baseline: 12px;
+            
+            /* fonts */
+            --book-title: 'Tulpen One', sans-serif;
+            --title: 'Cormorant Garamond', serif;
+            --body: 'Cormorant Garamond', serif;
+            --base-size: calc(var(--baseline) * 1.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--body-bg);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url('assets/img/bg_real.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+            background-color: rgba(250, 250, 250, 0.4);
+        }
+
+        .cover {
+            width: calc(var(--baseline) * 80);
+            height: calc(var(--baseline) * 62.6);
+            box-shadow: 0 0 100px rgba(0, 0, 0, .3);
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            perspective: 1400px;
+            position: relative;
+        }
+
+        .book__page {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            display: grid;
+            transform: rotateY(0deg);
+            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transform-origin: 0% 0%;
+            background-color: var(--page-bg);
+            background-image: linear-gradient(90deg, rgba(227,227,227,1) 0%, rgba(247,247,247,0) 18%);
+        }
+
+        .book__page:nth-of-type(1) {
+            background-image: linear-gradient(-90deg, rgba(227,227,227,1) 0%, rgba(247,247,247,0) 18%);
+        }
+
+        .book__page--1 {
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .book__page--1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book__page--2 {
+            position: absolute;
+            right: 0;
+            pointer-events: none;
+            transform-style: preserve-3d;
+            background-color: var(--page-bg);
+            background-image: linear-gradient(90deg, rgba(227,227,227,1) 0%, rgba(247,247,247,0) 18%);
+        }
+
+        .book__page--4 {
+        cursor: pointer;
+        overflow: visible;
+        background: url(assets/img/real_img2.png) no-repeat center center;
+            background-size: cover;
+        }
+
+        .page__content {
+            padding: 0;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page__content-book-title {
+            font-family: var(--book-title);
+            text-decoration-line: underline;
+            font-size: calc(var(--base-size) * 3.5);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--dark-text);
+            margin-bottom: calc(var(--baseline) * 2);
+        }
+
+        .page__content-title {
+            font-family: var(--title);
+            font-size: calc(var(--base-size) * 2.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: calc(var(--baseline) * 2);
+        }
+
+        .page__content-poem {
+            font-family: var(--body);
+            font-size: calc(var(--base-size) * 1.8);
+            text-align: center;
+            line-height: 1.2;
+            white-space: pre-line;
+            margin-bottom: calc(var(--baseline) * 2);
+        }
+
+        .page__number {
+            position: absolute;
+            bottom: var(--baseline);
+            width: calc(100% - (var(--baseline) * 2));
+            font-family: var(--title);
+            font-size: calc(var(--base-size) * 0.67);
+            text-align: center;
+        }
+
+        .book__page-front {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+                        object-fit: cover;
+
+        }
+ .book__page-back {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            backface-visibility: hidden;
+        }
+        .book__page-front {
+            transform: rotateY(0deg) translateZ(1px);
+        }
+
+        .book__page-back {
+            transform: rotateY(180deg) translateZ(1px);
+            padding: 0 calc(var(--baseline) * 1.8);
+                        width: 100%;
+
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        input[type="radio"]:checked + .book__page {
+            transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+            transform: rotateY(-180deg);
+        }
+
+        .wallpaper-credit {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            color: #000;
+            font-weight: bold;
+            z-index: 10;
+        }
+        .wallpaper-credit a {
+            color: #8B0000;
+            text-decoration: underline;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .cover {
+                width: 95vw;
+                height: calc(95vw * 0.71);
+            }
+            
+            .page__content-book-title {
+                font-size: calc(var(--base-size) * 2);
+            }
+            
+            .page__content-poem {
+                font-size: calc(var(--base-size) * 0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover animate__animated animate__swing">
+<div class="book animate__animated animate__zoomIn">
+            <!-- First Page (Image) -->
+            <label for="page-1" class="book__page book__page--1">
+                <img src="assets/img/real_img1.png" alt="Green Revolution Image">
+            </label>
+            
+            <!-- Second Page (First Poem) -->
+            <label for="page-2" class="book__page book__page--4">
+                <div class="page__content">
+                  
+            <label for="page-4" class="book__page book__page--1">
+                <img src="assets/img/real_img3.png" alt="Green Revolution Image">
+                    <div class="page__number">1</div>
+                </div>
+            </label>
+            
+            <!-- Radio inputs for page flipping -->
+            <input type="radio" name="page" id="page-1"/>
+            <input type="radio" name="page" id="page-2"/>
+            
+            <!-- Third Page (Cover/Back) -->
+            <label class="book__page book__page--2">
+                <div class="book__page-front">
+                    <div class="page__content">
+                        <h1 class="page__content-book-title">They Called It a Revolution</h1>
+                        <h2 class="page__content-title">A Folk-Style Poem</h2>
+                    <div class="page__content-poem">
+                        In fields of Punjab, seeds were sown,
+                        By Borlaug's wheat, by science grown.
+                        Swaminathan spread the word—
+                        And hungry bellies soon were heard.
+
+                        "They called it a revolution," they said,
+                        "A miracle that farmers led."
+
+                        The yield was high, the bags were full,
+                        The land had changed, so had the rule.
+                        Where millet, ragi once had stayed,
+                        Now just two grains the debtors paid.
+
+                        "They called it a revolution," they said,
+                        "But not all roots were left in bed."
+                        <div style="font-size: 1em; text-align: right; margin-top: 0em; margin-bottom: -2em; margin-left: 1em; margin-right: 1em;">
+                            ➡
+                        </div>
+                    </div>                    
+                </div>    
+            </div>
+                <div class="book__page-back">
+                    <div class="page__content">
+                          <h1 class="page__content-book-title">They Called It a Revolution</h1>
+   <div class="page__content-poem">
+                            The poisons came, the rivers dried,
+                            Machines replaced the bullock's stride.
+                            And stubble burned to chase the date,
+                            While Delhi choked beneath its fate.
+
+                            "They called it a revolution," they said,
+                            "But nothing good comes free of dread."
+
+                            Still deep beneath, the soil dreams on,
+                            Of grains that thrived before they'd gone.
+                            And maybe now, with wiser hands,
+                            We'll grow what feeds both life and lands.
+
+                            "They call it evergreen," they say,
+                            "And pray we've learned a kinder way."
+                        </div>
+        </div>
+        
+    </div>
+    </label>
+    </div>
+    </div>
+    
+        <footer class="wallpaper-credit">
+      Image credits:
+      <a
+        href="https://www.ishantankha.com/gallery/Punjab-Crop-Burning/G0000Z_lCl8BLyNI/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Stock Images and Ishan Tanka
+      </a>
+    </footer>
+</body>
+</html>
