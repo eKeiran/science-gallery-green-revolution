@@ -207,18 +207,71 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+                :root {
+        --baseline: 11px;
+
+    }
             .cover {
                 width: 95vw;
                 height: calc(95vw * 0.71);
             }
             
             .page__content-book-title {
-                font-size: calc(var(--base-size) * 2);
+                font-size: calc(var(--base-size) * 1);
             }
             
             .page__content-poem {
-                font-size: calc(var(--base-size) * 0.9);
+                font-size: calc(var(--base-size) * 1.5);
             }
+            /* Responsive font sizes */
+@media (max-width: 1024px) {
+    :root {
+
+    }
+    .page__content-book-title {
+        font-size: calc(var(--base-size) * 0.2);
+                --baseline: 6px;
+
+    }
+    .page__content-title {
+        font-size: calc(var(--base-size) * 1);
+                        --baseline: 2px;
+
+    }
+    .page__content-poem {
+        font-size: calc(var(--base-size) * 2);
+                --baseline: -10px;
+
+    }
+    .page__number {
+        font-size: calc(var(--base-size) * 0.6);
+    }
+    .wallpaper-credit {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --base-size: calc(var(--baseline) * 0.8);
+    }
+    .page__content-book-title {
+        font-size: calc(var(--base-size) * 2);
+    }
+    .page__content-title {
+        font-size: calc(var(--base-size) * 1.2);
+    }
+    .page__content-poem {
+        font-size: calc(var(--base-size) * 0.9);
+    }
+    .page__number {
+        font-size: calc(var(--base-size) * 0.5);
+    }
+    .wallpaper-credit {
+        font-size: 0.8rem;
+    }
+}
+
         }
     </style>
 </head>
